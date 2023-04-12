@@ -1,13 +1,11 @@
 import { getCsrfToken, getProviders, signIn, useSession, getSession } from "next-auth/react"
 import { useRouter } from "next/router";
 
+
 // import { authOptions } from "./api/auth/[...nextauth]";
 export default function SignIn({ csrfToken, providers }) {
     const { data: session } = useSession();
-
     const router = useRouter();
-    // console.log(session)
-    // console.log(router)
     if (session) {
         router.push(router.query.callbackUrl);
     }
@@ -36,8 +34,12 @@ export default function SignIn({ csrfToken, providers }) {
 export async function getServerSideProps(context) {
     const csrfToken = await getCsrfToken(context)
     const providers = await getProviders();
+
     const session = await getSession(context);
-    console.log(session);
+    // console.log(session)
+    // if (session) {
+    //     return { redirect: { destination: "/" } };
+    // }
     return {
         props: { csrfToken, providers: providers || [] },
     }

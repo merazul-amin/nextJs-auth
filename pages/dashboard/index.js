@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { getSession, signIn, signOut, session } from "next-auth/react"
+import { getSession, signIn, signOut, session, useSession } from "next-auth/react"
 
 const DashboardPage = () => {
+    console.log(session)
+    const newSession = useSession();
+    console.log(newSession)
 
     const [loading, setLoading] = useState(true);
     const [user, setUser] = useState(null);
@@ -11,6 +14,7 @@ const DashboardPage = () => {
             console.log(session)
             if (!session) {
                 signIn();
+                setUser(null)
             }
             else {
                 setUser(session);
