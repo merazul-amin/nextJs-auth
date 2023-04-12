@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export default function Home() {
   const { data: session, status } = useSession();
-
+  console.log(session, status);
   return (
     <div>
       {
@@ -12,6 +12,8 @@ export default function Home() {
           :
           <button onClick={signIn}>Sign In</button>
       }
+
+      <h1>{session?.user?.email}</h1>
       <br />
       <br />
       <Link href={'/dashboard'}>Dashboard</Link>
