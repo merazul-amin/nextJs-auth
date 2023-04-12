@@ -25,9 +25,11 @@ export const authOptions = {
         GoogleProvider({
             clientId: process.env.GOOGLE_CLIENT_ID,
             clientSecret: process.env.GOOGLE_CLIENT_SECRET
-        })
-
+        }),
     ],
+    pages: {
+        signIn: '/signIn'
+    }
+
 }
-console.log(process.env.EMAIL_SERVER_HOST)
 export default NextAuth(authOptions)

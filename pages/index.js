@@ -13,7 +13,7 @@ export default function Home() {
           <button onClick={signIn}>Sign In</button>
       }
 
-      <h1>{session?.user?.email}</h1>
+      <h1>{session?.user?.email ? session?.user?.email : 'Not Logged In'}</h1>
       <br />
       <br />
       <Link href={'/dashboard'}>Dashboard</Link>
